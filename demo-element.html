@@ -14,12 +14,16 @@
                 width: 320px;
             }
 
-            :host .container::shadow > #matHeaderPanelWrapper {
+            :host .container::shadow #matHeaderPanelWrapper {
                 border-width: 1px;
             }
 
             :host .container [extended] {
                 padding-bottom: 16px;
+            }
+
+            :host .container mat-header::shadow #matHeaderNavButton {
+                display: none !important;
             }
         </style>
         <mat-demo label="mat-fab">
