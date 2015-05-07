@@ -44,7 +44,7 @@ This element is used to display a material floating button.
 <link rel="import" href="../xp-pressed-state/xp-pressed-state.html">
 <link rel="import" href="../xp-targeter/xp-targeter.html">
 
-<polymer-element name="mat-fab" constructor="MATFabElement" attributes="across background data disabled download empty focused href icon iconSrc invokes left mini pressed raster rel target top">
+<polymer-element name="mat-fab" constructor="MATFabElement" attributes="across background data disabled download empty focused href icon iconSrc left mini pressed raster rel target top">
 
     <template>
         <link rel="stylesheet" href="../xp-pressed-state/xp-pressed-state.css">
@@ -143,7 +143,7 @@ This element is used to display a material floating button.
         <template context="{{}}" is="xp-anchor-state" id="xpAnchorState" anchor="{{$.matFabAnchor}}" download="{{download}}" href="{{href}}" rel="{{rel}}" target="{{target}}"></template>
         <template context="{{}}" is="xp-disabled-state" id="xpDisabledState" disabled="{{disabled}}"></template>
         <template context="{{}}" is="xp-focused-state" id="xpFocusedState" disabled="{{disabled}}" focused="{{focused}}"></template>
-        <template context="{{}}" is="xp-pressed-state" id="xpPressedState" disabled="{{disabled}}" invokes="{{invokes}}" pressed="{{pressed}}" target="{{target}}"></template>
+        <template context="{{}}" is="xp-pressed-state" id="xpPressedState" disabled="{{disabled}}" pressed="{{pressed}}" target="{{target}}"></template>
         <mat-paper id="matFabWrapper" background="{{background}}" disabled="{{disabled}}" pressable="{{true}}" z="[[1]]">
             <a id="matFabAnchor">
                 <div id="matFabMain" horizontal layout center-center>
@@ -177,7 +177,6 @@ This element is used to display a material floating button.
              * @event xp-activate
              * @param {Element} firer
              * @param {Element} target
-             * @param {string} invokes
              * @param {boolean} isActive
              * @bubbles
              * @cancelable
@@ -283,15 +282,6 @@ This element is used to display a material floating button.
                  * @default ""
                  */
                 iconSrc: {reflect: true, value: ''},
-
-                /**
-                 * The target's method to invoke on press.
-                 *
-                 * @attribute invokes
-                 * @type string
-                 * @default "toggle"
-                 */
-                invokes: {reflect: true, value: 'toggle'},
 
                 /**
                  * If set to true, the element is aligned to the left.
