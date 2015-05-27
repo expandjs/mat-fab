@@ -1,7 +1,7 @@
 {
   "name": "mat-fab",
   "license": "BSD-3-Clause",
-  "version": "0.8.11",
+  "version": "0.8.12",
   "description": "A custom element used to display a Material Design FAB (Floating Action Button)",
   "homepage": "http://expandjs.com/elements/mat-fab",
   "authors": [
