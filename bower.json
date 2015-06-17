@@ -1,0 +1,44 @@
+{
+  "name": "mat-fab",
+  "license": "BSD-3-Clause",
+  "version": "0.9.0",
+  "description": "A custom element used to display a Material Design FAB (Floating Action Button)",
+  "homepage": "http://expandjs.com/elements/mat-fab",
+  "authors": [
+    "Giuliano Rullo <g.rullo@expandjs.com>",
+    "Maurizio Stefàno <m.stefano@expandjs.com>",
+    "Robert Manolea <r.manolea@expandjs.com>"
+  ],
+  "keywords": [
+    "material design",
+    "material fab",
+    "material button",
+    "web app",
+    "html5",
+    "expandjs",
+    "web-components"
+  ],
+  "main": [
+    "mat-fab.html"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "expandjs": "ExpandJS/expandjs",
+    "mat-icon": "ExpandJS/mat-icon",
+    "mat-paper": "ExpandJS/mat-paper",
+    "mat-ripple": "ExpandJS/mat-ripple",
+    "xp-anchor-behavior": "ExpandJS/xp-anchor-behavior",
+    "xp-pressed-behavior": "ExpandJS/xp-pressed-behavior",
+    "xp-referral-behavior": "ExpandJS/xp-referral-behavior",
+    "polymer": "Polymer/polymer",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout"
+  },
+  "devDependencies": {
+    "mat-content": "ExpandJS/mat-content",
+    "mat-demo": "ExpandJS/mat-demo",
+    "mat-header-panel": "ExpandJS/mat-header-panel",
+    "mat-icons": "ExpandJS/mat-icons"
+  }
+}
