@@ -1,3 +1,4 @@
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../mat-content/mat-content.html">
 <link rel="import" href="../mat-demo/mat-demo.html">
 <link rel="import" href="../mat-header-panel/mat-header-panel.html">
@@ -6,25 +7,32 @@
 
 <dom-module id="mat-fab-demo">
 
+    <style>
+        :host .demo-wrapper {
+            @apply(--layout-horizontal);
+            @apply(--layout-wrap);
+            @apply(--layout-center-justified);
+        }
+
+        :host .demo-container {
+            height: 480px;
+            margin: 32px 16px 0 16px;
+            position: relative;
+            width: 320px;
+        }
+
+        :host .demo-container #matHeaderPanelWrapper {
+            border-width: 1px;
+        }
+
+        :host .demo-container [extended] {
+            padding-bottom: 16px;
+        }
+    </style>
+
     <template>
-        <style>
-            :host .demo-container {
-                height: 480px;
-                margin: 32px 16px 0 16px;
-                position: relative;
-                width: 320px;
-            }
-
-            :host .demo-container #matHeaderPanelWrapper {
-                border-width: 1px;
-            }
-
-            :host .demo-container [extended] {
-                padding-bottom: 16px;
-            }
-        </style>
         <mat-demo label="mat-fab">
-            <div horizontal layout wrap center-justified>
+            <div class="demo-wrapper">
 
                 <mat-header-panel class="demo-container" background="white" mode="fixed">
                     <mat-header background="indigo">Default</mat-header>
