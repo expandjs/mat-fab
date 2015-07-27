@@ -17,7 +17,36 @@ It comes in two sizes, the normal one and a `mini` one.
 ```
 
 By default, the FAB will position itself at the right-bottom side of the screen.
-This be
+This behavior can be customized by setting `left` or `top` to move it around.
+
+```html
+<mat-fab icon="content:add" top></mat-fab>
+<mat-fab icon="content:add" left top></mat-fab>
+```
+
+Whenever the FAB is used inside an [app bar](http://www.google.com/design/spec/layout/structure.html#structure-app-bar)
+you can set `across` to make it center itself to the bottom edge of the app bar.
+
+Using it with [<mat-header>](https://expandjs.com/elements/mat-header), `across`
+will automatically be set for you.
+
+```html
+<mat-header>
+    ...
+    <mat-fab icon="content:add" left></mat-fab>
+</mat-header>
+```
+
+---
+
+## Styling
+
+The FAB's background color can be changed accordingly to the
+[Material Design palette](http://www.google.com/design/spec/style/color.html#color-color-palette).
+
+```html
+<mat-fab icon="content:add" background="amber"></mat-fab>
+```
 
 @element mat-fab
 @description A custom element used to display a material floating button
@@ -322,6 +351,17 @@ This be
             },
 
             /*********************************************************************/
+
+            // LISTENER
+            attached: function () {
+
+                // Vars
+                var self   = this,
+                    header = XP.findParentElement(Polymer.dom(self), '[header=""]');
+
+                // Setting
+                if (header) { self._setAcross(true); }
+            },
 
             // LISTENER
             ready: function () {
