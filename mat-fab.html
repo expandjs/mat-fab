@@ -9,26 +9,32 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 <!--
 An element used to display a [Material Design FAB](http://www.google.com/design/spec/components/buttons-floating-action-button.html).
 
-It comes in two sizes, the normal one and a `mini` one.
+It comes in two sizes, the default one of 56x56 and a `mini` one of 40x40.
 
 ```html
 <mat-fab icon="content:add"></mat-fab>
 <mat-fab icon="content:add" mini></mat-fab>
 ```
 
-By default, the FAB will position itself at the right-bottom side of the screen.
-This behavior can be customized by setting `left` or `top` to move it around.
+By default, the FAB is positioned at the right-bottom side of the screen.
+This behavior can be customized by setting `left` and/or `top` to move it around.
 
 ```html
-<mat-fab icon="content:add" top></mat-fab>
+<mat-fab icon="content:add" left></mat-fab>
 <mat-fab icon="content:add" left top></mat-fab>
 ```
 
-Whenever the FAB is used inside an [app bar](http://www.google.com/design/spec/layout/structure.html#structure-app-bar)
-you can set `across` to make it center itself to the bottom edge of the app bar.
+Whenever the FAB is used inside an [app bar](http://www.google.com/design/spec/layout/structure.html#structure-app-bar),
+you can set `across` to position it over the bottom edge.
 
-Using it with [<mat-header>](https://expandjs.com/elements/mat-header), `across`
-will automatically be set for you.
+```html
+<div class="app-bar">
+    ...
+    <mat-fab icon="content:add" across left></mat-fab>
+</div>
+```
+
+If used with [mat-header](https://expandjs.com/elements/mat-header), `across` is automatically set for you.
 
 ```html
 <mat-header>
@@ -46,7 +52,6 @@ The FAB's background color can be changed accordingly to the
 
 ```html
 <mat-fab icon="content:add" background="amber"></mat-fab>
-<mat-fab icon="content:add" background="green"></mat-fab>
 ```
 
 @element mat-fab
