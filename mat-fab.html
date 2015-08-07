@@ -67,19 +67,19 @@ The FAB's background color can be changed accordingly to the
 @behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.5
+@dependency expandjs ExpandJS/expandjs#0.9.6
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-icon ExpandJS/mat-icon#0.9.5
-@dependency mat-paper ExpandJS/mat-paper#0.9.5
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.5
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.5
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.5
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.5
+@dependency mat-icon ExpandJS/mat-icon#0.9.6
+@dependency mat-paper ExpandJS/mat-paper#0.9.6
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.6
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.6
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.6
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.6
 
-@devDependency mat-content ExpandJS/mat-content#0.9.5
-@devDependency mat-demo ExpandJS/mat-demo#0.9.5
-@devDependency mat-header-panel ExpandJS/mat-header-panel#0.9.5
-@devDependency mat-icons ExpandJS/mat-icons#0.9.5
+@devDependency mat-content ExpandJS/mat-content#0.9.6
+@devDependency mat-demo ExpandJS/mat-demo#0.9.6
+@devDependency mat-header-panel ExpandJS/mat-header-panel#0.9.6
+@devDependency mat-icons ExpandJS/mat-icons#0.9.6
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -366,7 +366,7 @@ The FAB's background color can be changed accordingly to the
                     header = XP.findParentElement(Polymer.dom(self), '[header=""]');
 
                 // Setting
-                if (header) { self._setAcross(true); }
+                if (header) { self.across = true; }
             },
 
             // LISTENER
