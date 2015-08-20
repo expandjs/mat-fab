@@ -2,6 +2,7 @@
   "name": "mat-fab",
   "license": "BSD-3-Clause",
   "version": "0.9.6",
+  "main": "mat-fab.html",
   "description": "A custom element used to display a material floating button",
   "homepage": "http://expandjs.com/elements/mat-fab",
   "authors": [
@@ -17,9 +18,6 @@
     "html5",
     "expandjs",
     "web-components"
-  ],
-  "main": [
-    "mat-fab.html"
   ],
   "ignore": [
     "**/.*"
