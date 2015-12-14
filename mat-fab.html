@@ -7,7 +7,7 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-An element used to display a [Material Design FAB](http://www.google.com/design/spec/components/buttons-floating-action-button.html).
+A custom element used to display a [Material Design FAB](http://www.google.com/design/spec/components/buttons-floating-action-button.html).
 
 It comes in two sizes, the default one of 56x56 and a `mini` one of 40x40.
 
@@ -55,48 +55,48 @@ The FAB's background color can be changed accordingly to the
 ```
 
 @element mat-fab
-@description A custom element used to display a material floating button
-@keywords material design, material fab, material button, web app, html5, expandjs, web-components
+@description A custom element used to display a Material Design FAB
+@keywords material design, material fab, expandjs, web app, custom elements, web-components
 @group contents
+@hot
+
 @homepage http://expandjs.com/elements/mat-fab
 @repository https://github.com/ExpandJS/mat-fab
 @demo http://expandjs.com/demo/mat-fab
 
 @behavior xp-anchor-behavior /bower_components/xp-anchor-behavior/xp-anchor-behavior.html
-@behavior xp-pressed-behavior /bower_components/xp-pressed-behavior/xp-pressed-behavior.html
-@behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
+@behavior xp-overlay-injector /bower_components/xp-overlay/xp-overlay-injector.html
+@behavior mat-pressed-paper-behavior /bower_components/mat-pressed-behavior/mat-pressed-paper-behavior.html
 
-@dependency polymer Polymer/polymer#^1.1.0
-@dependency expandjs ExpandJS/expandjs#0.9.11
+@dependency polymer Polymer/polymer#^1.2.0
+@dependency expandjs ExpandJS/expandjs#0.10.0
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-icon ExpandJS/mat-icon#0.9.11
-@dependency mat-paper ExpandJS/mat-paper#0.9.11
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.11
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.11
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.11
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.11
+@dependency mat-icon ExpandJS/mat-icon#0.10.0
+@dependency mat-pressed-behavior ExpandJS/mat-pressed-behavior#0.10.0
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.10.0
+@dependency xp-overlay ExpandJS/xp-overlay-injector#0.10.0
 
-@devDependency mat-content ExpandJS/mat-content#0.9.11
-@devDependency mat-demo ExpandJS/mat-demo#0.9.11
-@devDependency mat-header-panel ExpandJS/mat-header-panel#0.9.11
-@devDependency mat-icons ExpandJS/mat-icons#0.9.11
+@devDependency mat-demo ExpandJS/mat-demo#0.10.0
+@devDependency mat-header-panel ExpandJS/mat-header-panel#0.10.0
+@devDependency mat-icons ExpandJS/mat-icons#0.10.0
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../mat-icon/mat-icon.html">
-<link rel="import" href="../mat-paper/mat-paper.html">
-<link rel="import" href="../mat-ripple/mat-ripple.html">
+<link rel="import" href="../mat-pressed-behavior/mat-pressed-paper-behavior.html">
+<link rel="import" href="../mat-pressed-behavior/mat-pressed-paper-styles.html">
 <link rel="import" href="../xp-anchor-behavior/xp-anchor-behavior.html">
-<link rel="import" href="../xp-pressed-behavior/xp-pressed-behavior.html">
-<link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
+<link rel="import" href="../xp-anchor-behavior/xp-anchor-styles.html">
+<link rel="import" href="../xp-overlay/xp-overlay-injector.html">
 
 <dom-module id="mat-fab">
 
-    <template>
+    <template strip-whitespace>
 
-        <style include="xp-pressed-styles"></style>
+        <style include="xp-anchor-styles"></style>
+        <style include="mat-pressed-paper-styles"></style>
 
         <style>
             :host {
@@ -104,10 +104,43 @@ The FAB's background color can be changed accordingly to the
                 height: 56px;
                 position: absolute;
                 width: 56px;
+                -webkit-transition: border 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    box-shadow 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    opacity 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    visibility 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    border-radius 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                                    height 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                                    -webkit-transform 0.233s cubic-bezier(0.55, 0, 0.01, 1) 0.233s,
+                                    width 0.8s cubic-bezier(0.55, 0, 0.01, 1);
+                transition: border 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            box-shadow 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            opacity 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            visibility 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            border-radius 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                            height 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                            transform 0.233s cubic-bezier(0.55, 0, 0.01, 1) 0.233s,
+                            width 0.8s cubic-bezier(0.55, 0, 0.01, 1);
             }
 
-            :host([empty]) {
-                display: none !important;
+            :host([hidden]) {
+                -webkit-transform: scale(0) rotate(-45deg);
+                transform: scale(0) rotate(-45deg);
+                -webkit-transition: border 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    box-shadow 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    opacity 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    visibility 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                                    border-radius 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                                    height 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                                    -webkit-transform 0.233s cubic-bezier(0.55, 0, 0.01, 1),
+                                    width 0.8s cubic-bezier(0.55, 0, 0.01, 1);
+                transition: border 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            box-shadow 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            opacity 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            visibility 0.4s cubic-bezier(0.55, 0, 0.01, 1),
+                            border-radius 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                            height 0.8s cubic-bezier(0.55, 0, 0.01, 1),
+                            transform 0.233s cubic-bezier(0.55, 0, 0.01, 1),
+                            width 0.8s cubic-bezier(0.55, 0, 0.01, 1);
             }
 
             :host([mini]) {
@@ -143,42 +176,76 @@ The FAB's background color can be changed accordingly to the
                 bottom: 16px;
             }
 
-            :host #matFabWrapper,
-            :host #matFabMain {
-                border-radius: inherit;
-                height: 100%;
-                overflow: visible;
+            :host .anchor:after {
+                min-height: 48px;
+                min-width: 48px;
             }
 
-            :host #matFabMain {
+            :host .main {
                 @apply(--layout-horizontal);
                 @apply(--layout-center-center);
-            }
-
-            :host #matFabAnchor {
                 border-radius: inherit;
                 box-shadow: 0 1px 0 0 hsla(0, 100%, 100%, 0.1) inset, 0 -1px 0 0 hsla(0, 0%, 0%, 0.2) inset;
+                height: 100%;
+            }
+
+            :host .icons,
+            :host .icon {
                 display: block;
                 height: 100%;
-                outline: 0;
-                overflow: hidden;
-                text-decoration: none;
+                max-height: 24px;
+                max-width: 24px;
+                position: relative;
+                width: 100%;
             }
 
-            :host([mini]) #matFabAnchor:after {
-                bottom: -4px;
-                content: "";
-                left: -4px;
+            /* ANIMATION */
+
+            :host .icon {
+                -webkit-transition: opacity 0.330s cubic-bezier(0.55, 0, 0.01, 1),
+                                    -webkit-transform 0.330s cubic-bezier(0.55, 0, 0.01, 1),
+                                    visibility 0.233s cubic-bezier(0.55, 0, 0.01, 1);
+                transition: opacity 0.330s cubic-bezier(0.55, 0, 0.01, 1),
+                            transform 0.233s cubic-bezier(0.55, 0, 0.01, 1),
+                            visibility 0.330s cubic-bezier(0.55, 0, 0.01, 1);
+            }
+
+            :host([animated]) .icon.one {
                 position: absolute;
-                right: -4px;
-                top: -4px;
             }
 
-            :host #matFabIcon {
-                display: block;
+            :host .icon.one,
+            :host([active]) .icon.two {
+                opacity: 1;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+                visibility: visible;
             }
 
-            /* TABLET */
+            :host([active][animated]) .icon.one,
+            :host(:not([active])) .icon.two {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            :host([active][animated]) .icon.one {
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+
+            :host(:not([active])) .icon.two {
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+
+            /* MIXIN */
+
+            :host .icon.one { @apply(--mat-fab-icon-one); }
+            :host .icon.two { @apply(--mat-fab-icon-two); }
+            :host([active]) .icon.one { @apply(--mat-fab-active-icon-one); }
+            :host([active]) .icon.two { @apply(--mat-fab-active-icon-two); }
+
+            /* DESKTOP */
 
             @media (min-width: 960px) {
 
@@ -200,14 +267,16 @@ The FAB's background color can be changed accordingly to the
             }
         </style>
 
-        <mat-paper id="matFabWrapper" background="[[background]]" disabled="[[disabled]]" z="6" pressable>
-            <a id="matFabAnchor" tabindex="-1">
-                <div id="matFabMain">
-                    <mat-icon id="matFabIcon" disabled="[[disabled]]" empty="{{empty}}" name="[[icon]]" raster="{{raster}}" src="[[iconSrc]]"></mat-icon>
+        <a class="anchor" tabindex="-1" on-click="_anchorHandler">
+            <div class="main">
+                <div class="icons">
+                    <mat-icon class="icon one" disabled="[[disabled]]" name="[[icon]]" src="[[iconSrc]]"></mat-icon>
+                    <mat-icon class="icon two" disabled="[[disabled]]" name="[[activeIcon]]" src="[[activeIconSrc]]"></mat-icon>
                 </div>
-            </a>
-            <mat-ripple context="[[self]]" id="matFabRipple" auto-center></mat-ripple>
-        </mat-paper>
+            </div>
+        </a>
+
+        <div class="ripple-waves"></div>
 
     </template>
 
@@ -220,8 +289,8 @@ The FAB's background color can be changed accordingly to the
             // BEHAVIORS
             behaviors: [
                 Polymer.XPAnchorBehavior,
-                Polymer.XPPressedBehavior,
-                Polymer.XPReferralBehavior
+                Polymer.XPOverlayInjector,
+                Polymer.MatPressedPaperBehavior
             ],
 
             /*********************************************************************/
@@ -243,41 +312,72 @@ The FAB's background color can be changed accordingly to the
                 },
 
                 /**
-                 * The paper's background color.
+                 * The button's active icon.
+                 *
+                 * @attribute active-icon
+                 * @type string
+                 */
+                activeIcon: {
+                    observer: '_activeIconChanged',
+                    reflectToAttribute: true,
+                    type: String
+                },
+
+                /**
+                 * The button's active icon's src.
+                 *
+                 * @attribute active-icon-src
+                 * @type string
+                 */
+                activeIconSrc: {
+                    observer: '_activeIconChanged',
+                    reflectToAttribute: true,
+                    type: String
+                },
+
+                /**
+                 * If set to true, both icon and active icon are set.
+                 *
+                 * @attribute animated
+                 * @type boolean
+                 * @default false
+                 * @notifies
+                 * @readonly
+                 */
+                animated: {
+                    notify: true,
+                    readOnly: true,
+                    reflectToAttribute: true,
+                    type: Boolean,
+                    value: false
+                },
+
+                /**
+                 * The paper's background.
                  *
                  * @attribute background
                  * @type string
+                 * @default "deep-orange-600"
                  */
                 background: {
                     reflectToAttribute: true,
                     type: String,
-                    value: null
-                },
-
-                /**
-                 * The element's data.
-                 *
-                 * @attribute data
-                 * @type *
-                 * @notifies
-                 */
-                data: {
-                    notify: true,
-                    value: null
+                    value: 'deep-orange-600'
                 },
 
                 /**
                  * If set to true, the element is hidden.
                  *
-                 * @attribute empty
+                 * @attribute hidden
                  * @type boolean
+                 * @default false
                  * @notifies
-                 * @readonly
                  */
-                empty: {
+                hidden: {
                     notify: true,
                     reflectToAttribute: true,
-                    type: Boolean
+                    type: Boolean,
+                    value: false
                 },
 
                 /**
@@ -288,8 +388,7 @@ The FAB's background color can be changed accordingly to the
                  */
                 icon: {
                     reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: String
                 },
 
                 /**
@@ -300,8 +399,7 @@ The FAB's background color can be changed accordingly to the
                  */
                 iconSrc: {
                     reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: String
                 },
 
                 /**
@@ -331,20 +429,6 @@ The FAB's background color can be changed accordingly to the
                 },
 
                 /**
-                 * If set to true, the icon is a raster one instead of svg.
-                 *
-                 * @attribute raster
-                 * @type boolean
-                 * @notifies
-                 * @readonly
-                 */
-                raster: {
-                    notify: true,
-                    reflectToAttribute: true,
-                    type: Boolean
-                },
-
-                /**
                  * If set to true, the element is aligned to the top.
                  *
                  * @attribute top
@@ -355,7 +439,31 @@ The FAB's background color can be changed accordingly to the
                     reflectToAttribute: true,
                     type: Boolean,
                     value: false
+                },
+
+                /**
+                 * The fab's z-axis position.
+                 *
+                 * @attribute z
+                 * @type number
+                 * @default 6
+                 * @notifies
+                 */
+                z: {
+                    notify: true,
+                    reflectToAttribute: true,
+                    type: Number,
+                    value: 6
                 }
+            },
+
+            /*********************************************************************/
+
+            // OBSERVER
+            _activeIconChanged: function () {
+
+                // Setting
+                this._setAnimated(!!this.activeIcon || !!this.activeIconSrc);
             },
 
             /*********************************************************************/
@@ -363,17 +471,15 @@ The FAB's background color can be changed accordingly to the
             // LISTENER
             attached: function () {
 
-                // Vars
-                var self   = this,
-                    header = XP.findParentElement(Polymer.dom(self), '[header=""]');
-
                 // Setting
-                if (header) { self.across = true; }
+                this.across = this.across || !!XP.findParentElement(this, '.header');
             },
 
             // LISTENER
-            ready: function () {
-                this._setAnchor(this.$.matFabAnchor);
+            created: function () {
+
+                // Classifying
+                this.classList.add('fab');
             }
         });
     </script>
