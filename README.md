@@ -1,3 +1,3 @@
 # mat-fab
 
-See the [`documentation page`](http://expandjs.com/elements/mat-fab) for more information.
+This repository has been merged into [`mat-elements`](https://github.com/expandjs/mat-elements).
